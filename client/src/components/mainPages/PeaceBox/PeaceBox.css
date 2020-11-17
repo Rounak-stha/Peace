@@ -1,0 +1,86 @@
+.peace-box {
+  padding-bottom: 10px;
+  padding-right: 10px;
+  border-bottom: 5px solid var(--border-color);
+}
+
+.peace-input-div {
+  display: flex;
+  padding: 20px;
+  padding-bottom: 0;
+}
+
+.peace-input {
+  flex: 1; /*take as much space as you can dude*/
+  border: none;
+  resize: none;
+  height: 80px;
+  padding: 5px;
+  margin-left: 10px;
+  font-size: 18px;
+  max-height: fit-content;
+  background-color: var(--global-background);
+  color: white;
+}
+
+.peace-input:focus {
+  border-bottom: 1px solid var(--border-color);
+}
+
+.peacebox-footer {
+  display: flex;
+  align-items: flex-end;
+  margin-left: 60px;
+}
+
+.peace-box-button {
+  background-color: var(
+    --global-color
+  ) !important; /* !important overrides mui's default theme*/
+  color: white !important;
+  border-radius: 30px !important;
+  text-transform: inherit !important;
+  font-weight: 800 !important;
+  height: 35px !important;
+  width: 90px !important;
+  margin-top: 10px !important;
+  margin-left: auto !important; /*Not working, why????????*/
+}
+
+.peace-box-avatar {
+  height: 50px !important; /*default value : 40*/
+  width: 50px !important;
+}
+
+.emoji-click {
+  color: var(--global-color) !important;
+  font-size: 2.5rem !important;
+  padding: 8px;
+  border-radius: 50%;
+  display: inline;
+}
+
+.emoji-click:hover {
+  background-color: var(--hover-color);
+}
+
+.adjust-emojiKeyboard {
+  position: absolute !important;
+  top: 186px !important;
+  z-index: 1000 !important;
+}
+
+.emoji-picker-react {
+  box-shadow: none !important;
+  background-color: var(--global-background) !important;
+  border: 1px solid var(--border-color) !important;
+}
+
+.emoji-search {
+  background: var(--global-background);
+  border-radius: 20px !important;
+}
+
+.emoji-picker-react .emoji-group:before {
+  background: var(--global-background);
+}

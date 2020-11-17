@@ -1,0 +1,84 @@
+.post-wrapper {
+  display: flex;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.MuiCardHeader-title {
+  color: white;
+}
+
+.userAvatar {
+  margin-top: 7px;
+  margin-left: 7px;
+  margin-right: 5px;
+  height: 50px !important;
+  width: 50px !important;
+}
+
+.post-content {
+  background-color: var(--global-background) !important;
+  flex: 1;
+  margin-right: 10px;
+}
+
+.MuiCardHeader-root {
+  padding: 0 !important;
+  padding-top: 7px !important;
+  padding-left: 6px !important;
+}
+
+.MuiCardHeader-title {
+  font-weight: 700 !important;
+  font-size: 15px !important;
+}
+
+.MuiCardHeader-content > span.MuiTypography-root {
+  display: inline !important;
+}
+
+.MuiCardHeader-content > span.MuiCardHeader-subheader {
+  color: var(--border-color);
+  font-size: 15px !important;
+}
+
+.MuiSvgIcon-root {
+  color: var(--border-color);
+}
+
+.MuiSvgIcon-root:hover {
+  color: var(--global-color);
+}
+
+.MuiCardHeader-action > button {
+  padding: 3px;
+  margin: 10px 10px 0 0;
+}
+
+.MuiCardHeader-action > button:hover {
+  background-color: var(--hover-color);
+  color: var(--global-background);
+}
+
+.MuiCardContent-root {
+  color: white;
+  padding: 0 !important;
+  padding-left: 6px !important;
+  font-size: 13px;
+}
+
+.peace-photo {
+  margin-top: 10px;
+  border-radius: 25px;
+}
+
+.post-text {
+  margin: 0;
+}
+
+.fav-icon:hover {
+  color: red;
+}
+
+.peace-actions > button {
+  padding: 0;
+}

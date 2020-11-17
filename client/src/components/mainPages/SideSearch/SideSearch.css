@@ -1,0 +1,62 @@
+.sidesearch-wrapper {
+  flex: 0.3;
+}
+
+.sidesearch-wrapper > .search-icon-div > svg {
+  color: var(--border-color);
+  position: fixed;
+  top: 13px;
+  margin-left: 30px;
+}
+
+.sidesearch-input {
+  margin-left: 20px;
+  margin-top: 5px;
+  padding: 10px;
+  padding-left: 40px;
+  width: 75%;
+  border: 1px solid var(--border-color);
+  background: var(--global-background);
+  color: white;
+  border-radius: 30px;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.sidesearch-input:focus {
+  border: 1px solid var(--global-color);
+}
+.searched-user-div {
+  display: flex;
+  margin-left: 30px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 10px;
+  width: 70%;
+  border: 1px solid var(--border-color);
+  box-shadow: 2px 2px 2px var(--border-color), -2px -2px 2px var(--border-color);
+}
+
+.searched-user-div > div.MuiAvatar-root {
+  height: 45px;
+  width: 45px;
+}
+
+.searched-user-detail {
+  margin-left: 10px;
+  padding-top: 5px;
+}
+
+.searched-user-detail > p {
+  margin: 0;
+}
+
+.searchedUser-displayName {
+  font-weight: 700;
+  font-size: 15px;
+}
+
+.searchedUser-userName {
+  color: var(--border-color);
+  font-size: 15px;
+}

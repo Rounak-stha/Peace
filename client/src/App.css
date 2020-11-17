@@ -1,0 +1,40 @@
+* {
+  box-sizing: border-box;
+}
+
+*:focus {
+  outline: none;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  --global-color: #50b7f5;
+  --global-background: #151e29;
+  --border-color: #6e7a75;
+  --hover-color: #1b2740;
+  background-color: var(--global-background);
+  font-family: Arial, Helvetica, sans-serif;
+  color: white;
+}
+
+#root {
+  height: 100%;
+  width: 100%;
+}
+
+.app-main {
+  height: 100%;
+  width: 100%;
+}
+
+.loading-spinner {
+  font-size: 50px;
+  color: var(--global-color);
+  position: relative;
+  top: 50px;
+  left: 45%;
+}

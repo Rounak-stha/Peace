@@ -1,0 +1,82 @@
+.profile-wrapper {
+  flex: 0.5;
+  border-right: 1px solid var(--border-color);
+}
+
+.profile-head {
+  display: flex;
+  padding: 10px;
+  padding-bottom: 20px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid var(--border-color) !important;
+}
+
+.follow-btn {
+  margin-top: 140px;
+  margin-left: auto;
+}
+
+.follow-btn > button {
+  border: 1px solid var(--border-color);
+  border-radius: 20px;
+  padding: 10px 20px;
+  background: var(--global-background);
+  color: var(--global-color);
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.follow-btn > button:hover {
+  background: var(--hover-color);
+}
+
+.avatar-follow {
+  display: flex;
+  align-items: flex-end;
+}
+
+.user-avatar {
+  height: 130px !important;
+  width: 130px !important;
+}
+
+.profile-card {
+  background-color: var(--global-background) !important;
+  box-shadow: none !important;
+}
+
+.profile-name {
+  margin-bottom: 10px;
+}
+
+.profile-name > div > span.MuiCardHeader-title {
+  font-size: 20px !important;
+  font-weight: 900 !important;
+}
+
+.follow-data > p {
+  display: inline;
+}
+
+.following {
+  margin-right: 8px;
+}
+
+.follow-data > p > span {
+  color: var(--border-color);
+}
+
+.profile-name > .MuiCardHeader-content > span.MuiTypography-root {
+  display: block !important;
+}
+
+/*Hide scrollbar for chrome, safari and opera*/
+.profile-wrapper::-webkit-scrollbar {
+  display: none;
+}
+
+/*Hide scrollbar for IE, Edge, Firefox*/
+.profile-wrapper {
+  -ms-overflow-style: none; /*IE, safari*/
+  scrollbar-width: none; /*Firefox*/
+}

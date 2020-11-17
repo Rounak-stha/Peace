@@ -1,0 +1,36 @@
+.main-feed {
+  flex: 0.5;
+  border-right: 1px solid var(--border-color);
+  min-width: fit-content;
+  overflow-y: scroll;
+}
+
+.header {
+  position: sticky; /*like relative and fixed combined, relative until it reaches the given position and fixd*/
+  top: 0;
+  font-weight: 1000;
+  border-bottom: 1px solid var(--border-color);
+  background-color: var(--global-background);
+  font-size: 20px;
+  z-index: 100;
+}
+
+.header > h2 {
+  padding: 10px 0 5px 10px;
+  margin: 0;
+}
+
+/*Hide scrollbar for chrome, safari and opera*/
+.main-feed::-webkit-scrollbar {
+  display: none;
+}
+
+/*Hide scrollbar for IE, Edge, Firefox*/
+.main-feed {
+  -ms-overflow-style: none; /*IE, safari*/
+  scrollbar-width: none; /*Firefox*/
+}
+
+nav.emoji-categories > button {
+  color: var(--border-color);
+}
