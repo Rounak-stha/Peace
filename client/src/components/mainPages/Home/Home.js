@@ -1,4 +1,5 @@
 import React, {useState, useEffect, useRef} from 'react'
+import Header from '../Header/Header'
 import PeaceBox from '../PeaceBox/PeaceBox'
 import Post from '../Post/Post'
 import {useUserContext} from '../../../userContext'
@@ -14,11 +15,10 @@ function Home() {
 
     const {myData} = useUserContext()
     const {server} = useAuth()
-
     const posts = useRef([])
 
     useEffect(() => {
-        if (!loadingPosts) return  
+        if (!loadingPosts) return   // run only on initial render
         fetch(`${server}/post/followingPosts`, {
             method: "post",
             headers: {"Content-Type": "Application/json"},
@@ -26,27 +26,26 @@ function Home() {
         })
             .then((res) => {
                 if (!res.ok) throw res
-                return res.json()               
+                return res.json()  // dont forget return, return resolves
             })
             .then((data) => {
-                posts.current = data.posts
-                myData.avatarSrc = data.myAvatar
+                posts.current = data
                 setLoadingPosts(false)
             })
             .catch((err) => {
-                if (!err.ok) setServerError(true)
+                if (!err.ok === false) setServerError(true)
                 else setNetworkError(true)
-            })
+            })  // to-do
     }) 
 
     function loadPosts() {
         if (posts.current.length === 0) {
             return (
                 <Post 
-                    displayName="AdminName"
-                    userName="AdminUserName"
-                    avatarSrc="AdminAvatar"
-                    postText="AdminPost"
+                    displayName="Admin"
+                    userName="peace"
+                    avatarSrc="https://i.pinimg.com/originals/4d/74/ef/4d74efd894517b7d1d0325d9767fd799.png"
+                    postText="Find profiles to follow... search for anime characters, dogs and cats breed, minions"
                 />
             )
         }
@@ -67,21 +66,22 @@ function Home() {
     
 
     return (
-        <div className="main-feed">
+        <div className="main-feed middle">
             {/*Header */}
-            <header className="header" style={{color: networkError || serverError ? "red": "white"}}>
+            <Header style={{color: networkError || serverError ? "red": "white"}} src={myData.avatarSrc}>
                 {networkError || serverError ? networkError ? <h2>Network Error!</h2> : <h2 >Server Error</h2> : 
-                    <h2 >Home</h2>}
-            </header>
+                    <h2>Home</h2>}
+            </Header>
 
             {/*Peace box*/}
             <PeaceBox userName={myData.userName} avatarSrc={myData.avatarSrc} server={server}/>
 
             {/*Posts*/}
-            {loadingPosts ? <div className="loading-spinner">
-                                <FontAwesomeIcon icon={faSpinner} spin/>  
-                            </div> : 
-                loadPosts()
+            {networkError || serverError ? null : 
+                loadingPosts ? <div className="loading-spinner">
+                                    <FontAwesomeIcon icon={faSpinner} spin/>   {/* How difficult can it be? */}
+                                </div> : 
+                                loadPosts()
             }
             
         </div>

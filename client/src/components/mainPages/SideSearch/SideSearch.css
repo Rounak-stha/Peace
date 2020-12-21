@@ -2,6 +2,19 @@
   flex: 0.3;
 }
 
+@media screen and (max-width: 800px) {
+  .mSsearch-wrapper {
+    display: none;
+  }
+  .sidesearch-wrapper {
+    z-index: 101;
+    width: 300px;
+    position: fixed;
+    top: 1px;
+    left: 11%;
+  }
+}
+
 .sidesearch-wrapper > .search-icon-div > svg {
   color: var(--border-color);
   position: fixed;

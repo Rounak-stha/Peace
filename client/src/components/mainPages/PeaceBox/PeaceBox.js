@@ -10,6 +10,8 @@ function PeaceBox({userName, avatarSrc, server}) {
     const [peaceText, setPeaceText] = useState('')
     const [showEmoKeyboard, setShowEmoKeyboard] = useState(false)
     
+    let desktop = window.innerWidth > 800 ? " desktop-peacebox" : ""
+
     function onEmojiClick(e, {emoji}) {
         setPeaceText((prevState) => prevState + emoji)
     }
@@ -18,6 +20,10 @@ function PeaceBox({userName, avatarSrc, server}) {
         e.stopPropagation()
         setShowEmoKeyboard((prevState) => !prevState)
     }
+
+    /* document.addEventListener('click', () => setShowEmoKeyboard((prevState) => {  // is this okay?
+        if (prevState) return (!prevState)
+    })) */
     
     async function handlePeaceSubmit() {
         fetch(`${server}/post/userPost`, {
@@ -34,7 +40,7 @@ function PeaceBox({userName, avatarSrc, server}) {
             .catch(() => 1)  // To-Do
     }
     return (
-        <div className="peace-box">
+        <div className={`peace-box${desktop}`}>
             <form>
                 <div className="peace-input-div">
                     <Avatar className="peace-box-avatar" src={avatarSrc} />

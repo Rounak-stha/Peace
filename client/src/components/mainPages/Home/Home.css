@@ -5,8 +5,8 @@
   overflow-y: scroll;
 }
 
-.header {
-  position: sticky; /*like relative and fixed combined, relative until it reaches the given position and fixd*/
+/* .header {
+  position: sticky; 
   top: 0;
   font-weight: 1000;
   border-bottom: 1px solid var(--border-color);
@@ -18,7 +18,7 @@
 .header > h2 {
   padding: 10px 0 5px 10px;
   margin: 0;
-}
+} */
 
 /*Hide scrollbar for chrome, safari and opera*/
 .main-feed::-webkit-scrollbar {

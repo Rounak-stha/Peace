@@ -5,6 +5,8 @@ import { faSpinner } from '@fortawesome/free-solid-svg-icons'
 import {Redirect} from "react-router-dom"
 import '../logsign.css'
 
+// <FontAwesomeIcon icon={faSpinner} spin/>
+
 function Login({setIsSignedUp}) {
     const [userName, setUserName] = useState('')
     const [password, setPassword] = useState('');
@@ -26,6 +28,7 @@ function Login({setIsSignedUp}) {
             body: JSON.stringify({userName, password})
         })
             .then((res) => {
+                //console.log(res)
                 return res.json()
             })
             .then((res) => {

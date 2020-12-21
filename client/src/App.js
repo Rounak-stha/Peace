@@ -11,7 +11,7 @@ function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(localStorage.getItem("authenticated") === 'true')
   const [user, setUser] = useState({})
 
-  const server = config.server
+  const server = "http://localhost:8888" // config.server
  
   
   return (

@@ -5,3 +5,49 @@
   margin-left: auto;
   margin-right: auto;
 }
+
+@media screen and (max-width: 800px) {
+  .main-dashboard {
+    height: 100%;
+    display: grid;
+    width: 100%;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: 5% auto 5%;
+  }
+
+  .middle {
+    grid-row: 1 / -2;
+    grid-column: 1 / -1;
+  }
+
+  .peace-icon {
+    display: none;
+  }
+  #sidebar {
+    background: var(--global-background);
+    grid-row: -2 / -1;
+    grid-column: 1 / -1;
+    width: 100%;
+    height: fit-content;
+    padding: 0;
+    display: flex;
+    justify-content: space-evenly;
+    border: none;
+    border-top: 1px solid var(--border-color);
+    position: sticky;
+    bottom: 0;
+    left: 0;
+    z-index: 100;
+  }
+
+  #sidebar > div.search-icon > svg {
+    display: block;
+    font-size: 40px;
+  }
+
+  .sidebar-component {
+    width: fit-content;
+    height: fit-content;
+    margin: 0;
+  }
+}

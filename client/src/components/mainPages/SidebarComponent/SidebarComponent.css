@@ -7,19 +7,25 @@
   width: fit-content;
 }
 
-.sidebar-component:hover {
-  background-color: #1b2740 !important;
-  border-radius: 30px;
-  transition: color 100ms ease-out;
+.icon {
+  font-size: 40px !important;
 }
 
-.sidebar-component:hover > * {
-  color: var(--global-color) !important;
-}
+@media screen and (min-width: 800px) {
+  .sidebar-component:hover {
+    background-color: #1b2740 !important;
+    border-radius: 30px;
+    transition: color 100ms ease-out;
+  }
 
-.sidebar-component:hover .sidebar-icon .icon[style] {
-  /*over riding inline style*/
-  color: var(--global-color) !important;
+  .sidebar-component:hover > * {
+    color: var(--global-color) !important;
+  }
+
+  .sidebar-component:hover .sidebar-icon .icon[style] {
+    /*over riding inline style*/
+    color: var(--global-color) !important;
+  }
 }
 
 .icon-name {

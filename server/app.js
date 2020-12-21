@@ -1,7 +1,6 @@
 const express = require('express')
 const mongoose = require('mongoose');
 const postRoutes = require('./routes/postRoutes')
-const getRoutes = require('./routes/getRoutes')
 const cors = require('cors')
 const {mongooseConnect} = require('./config')
 
@@ -14,13 +13,9 @@ mongoose.set('useUnifiedTopology', true);
 //emable cors
  app.use(cors())
 
-app.use(express.json()); 
+app.use(express.json()); // parse incoming json 
 
-
-// Get Routes
-app.use('/get', getRoutes)
-
-app.get('/', (req, res) => res.send("<h1>Hi, qwerty</h1>"))
+app.get('/', (req, res) => res.send("<h1>Hi, who are you?</h1>"))
 
 //post routes
 app.use('/post', postRoutes)
@@ -33,4 +28,3 @@ app.listen(port, () => {
     db.on('error', () => console.log('error connecting to db'));
     db.once('open', () => console.log('connected to db'));
 });
-

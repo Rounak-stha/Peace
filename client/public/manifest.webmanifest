@@ -1,0 +1,26 @@
+{
+  "short_name": "Peace",
+  "name": "Peace App",
+  "description": "Twitter Clone",
+  "icons": [
+    {
+      "src": "space-coloured-2-512.webp",
+      "type": "image/webp",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": "/",
+  "background_color": " #151e29",
+  "display": "standalone",
+  "scope": "/",
+  "theme_color": "#6e7a75",
+  "shortcuts": [
+    {
+      "name": "Peace App",
+      "short_name": "Peace",
+      "description": "Twitter Clone",
+      "url": "/",
+      "icons": [{ "src": "space-coloured-2-512.webp", "sizes": "512x512" }]
+    }
+  ]
+}

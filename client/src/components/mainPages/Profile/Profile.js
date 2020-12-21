@@ -1,4 +1,5 @@
 import React, {useState, useEffect, useRef} from 'react'
+import Header from '../Header/Header'
 import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
 import CardContent from '@material-ui/core/CardContent';
@@ -17,7 +18,7 @@ function Profile({match, location}) {
     const [serverError, setServerError] = useState(false)
     const [stalkingUser, setStalkingUser] = useState(false)
     const [following, setFollowing] = useState(false)
-    const [shouldFetch, setshouldFetch] = useState(true)  
+    const [shouldFetch, setshouldFetch] = useState(true)  // value doesnot matter, should change it if we want to fetch
     const [lastProfile, setLastProfile] = useState('')
 
     let myPosts = useRef(null)
@@ -26,27 +27,31 @@ function Profile({match, location}) {
 
     const {myData} = useUserContext()
     const {server} = useAuth()
+    // console.log("lol")
 
     useEffect(() => {
-        if (!lastProfile) { 
-            setLastProfile(match.isExact ? location.pathname : location.search) 
+        if (!lastProfile) { // first visit
+            setLastProfile(match.isExact ? location.pathname : location.search) // addingpathname and search will be too long and comparision will take longer time
             return
         }
+        // other Visits
         
-        const currentProfile = match.isExact ? location.pathname : location.search  
-        if (lastProfile !== currentProfile) {   
+        const currentProfile = match.isExact ? location.pathname : location.search  // on every render
+        if (lastProfile !== currentProfile) {   // we want to run the 2nd(below) useEffect only when viewing different profile
             setLastProfile(currentProfile)
         }
     })
 
     useEffect(() => {
-        if (!lastProfile) return 
-        if (!match.isExact) {   
+        if (!lastProfile) return  // donot run on first render
+        // console.log("2nd use effect")
+        if (!match.isExact) {    // if path is exact show my own profile or show stalking profile
+            // console.log("match is not exact")
             const names = location.search.split('&').map((name) => name.split('=')[1])
             profileData.current = {userName: names[0], displayName: names[1]}
             setLoadingAll(false)
             setLoading(true)
-            setshouldFetch((prevState) => !prevState)  
+            setshouldFetch((prevState) => !prevState)  // run the third useEfext to fetch data
             setStalkingUser(true)
         }
             
@@ -55,7 +60,7 @@ function Profile({match, location}) {
             profileData.current = {displayName: myData.displayName, userName: myData.userName, avatarSrc: myData.avatarSrc}
             setLoadingAll(false)
             setLoading(true)
-            setshouldFetch((prevState) => !prevState) 
+            setshouldFetch((prevState) => !prevState) // run the third useEfext to fetch data
             setStalkingUser(false)
         }
     }, [lastProfile])
@@ -63,7 +68,9 @@ function Profile({match, location}) {
     
 
     useEffect(() => {
-        if (!lastProfile) return
+        // fetching avatarSrc in profile js
+        if (!lastProfile) return // donot run on first render  
+        // console.log('fetching... in profile.js')
         const reqBody = stalkingUser ? {userName: profileData.current.userName, myName: myData.userName} : {userName: profileData.current.userName}
         fetch(`${server}/post/profileData`, {
             method: "post",
@@ -74,10 +81,10 @@ function Profile({match, location}) {
         })
             .then((res)=> {
                 if (!res.ok) throw res 
-                return res.json() 
+                return res.json()  // dont forget return
             })
             .then((data) => {
-                myPosts.current = data.posts 
+                myPosts.current = data.posts // use refs or normal variable values wont be updated 
                 profileData.current.following = data.following;
                 profileData.current.followers = data.followers;
                 profileData.current.avatarSrc = data.avatarSrc;
@@ -86,8 +93,7 @@ function Profile({match, location}) {
                 setFollowing(data.iFollow)
             })
             .catch((err) => {
-                console.log(err)
-                if (err.ok === false) setServerError(true) 
+                if (err.ok === false) setServerError(true) // donot check (!err.ok) as undefined is a falsy value
                 else setNetworkError(true)
             })
     }, [shouldFetch])
@@ -96,6 +102,7 @@ function Profile({match, location}) {
         const followRoute = following ? "unFollow" : "follow"
         const reqBody = following ? {unFollower: myData.userName, unFollowing: profileData.current.userName} : {follower: myData.userName, following: profileData.current.userName}
         setFollowing((prevState) => !prevState)
+        // console.log({follower: myData.userName, following: userName})
         await fetch(`${server}/post/${followRoute}`, {
             method: "post",
             headers: {"Content-Type": "Application/json"},
@@ -110,13 +117,13 @@ function Profile({match, location}) {
     }
     return (
             loadingAll ? <div className="loading-spinner">
-                            <FontAwesomeIcon icon={faSpinner} spin/>   
+                            <FontAwesomeIcon icon={faSpinner} spin/>   {/* How difficult can it be? */}
                          </div> : 
-            <div className="profile-wrapper">
-                <header className="header">
-                    {networkError || serverError ? (networkError ? <h2 style={{color: "red"}}>No internet connection!</h2> : <h2 style={{color: "red"}}>Error! Try again</h2>) : 
+            <div className="profile-wrapper middle">
+                <Header style={{color: networkError || serverError ? "red": "white"}} src={profileData.current.avatarSrc}>
+                    {networkError || serverError ? networkError ? <h2>Network Error!</h2> : <h2 >Server Error</h2> : 
                         stalkingUser ? <h2>{profileData.current.displayName}</h2> : <h2>Profile</h2>}
-                </header>
+                </Header>
                 <div className="profile-head">
                     <div>
                     <Avatar className="user-avatar" src={profileData.current.avatarSrc} />
@@ -147,7 +154,7 @@ function Profile({match, location}) {
                 </div> 
                 {networkError || serverError ? null : 
                      loading ? <div className="loading-spinner">
-                                    <FontAwesomeIcon icon={faSpinner} spin/>  
+                                    <FontAwesomeIcon icon={faSpinner} spin/>   {/* How difficult can it be? */}
                                 </div> :
                         myPosts.current.map((post, i) => (
                             <Post 

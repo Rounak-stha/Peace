@@ -6,6 +6,10 @@
   padding-right: 0;
 }
 
+#sidebar > div.search-icon > svg {
+  display: none;
+}
+
 .peace-icon {
   margin-top: 20px;
   padding-left: 15px;

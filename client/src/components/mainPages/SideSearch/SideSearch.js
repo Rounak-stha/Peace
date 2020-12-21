@@ -7,7 +7,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSpinner } from '@fortawesome/free-solid-svg-icons'
 import './SideSearch.css'
 
-function SideSearch() {
+function SideSearch({className}) {
     const [color, setColor] = useState("#6e7a75")
     const [searchText, setSearchText] = useState('')
     const [searchedUsers, setSearchedUsers] = useState([])
@@ -66,7 +66,7 @@ function SideSearch() {
         history.push(`/profile/visit?u=${userData.current.userName}&d=${userData.current.displayName}`)
     }
     return (
-        <div className="sidesearch-wrapper">
+        <div className={`sidesearch-wrapper ${className}`}>
             <div className="search-icon-div">
                 <SearchIcon style={{color}}/>
             </div>
